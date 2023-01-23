@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 // Specify to Spring to scan for specific modules here.
-@ComponentScan({"com.guymanpersonboy.springboot2.model"})
+@ComponentScan({"api", "dao", "model", "service"})
 public class Springboot2Application {
 
 	public static void main(String[] args) {

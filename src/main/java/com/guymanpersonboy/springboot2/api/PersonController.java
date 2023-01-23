@@ -3,12 +3,12 @@ package com.guymanpersonboy.springboot2.api;
 import com.guymanpersonboy.springboot2.model.Person;
 import com.guymanpersonboy.springboot2.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("api/person")
+import java.util.List;
+import java.util.UUID;
+
+@RequestMapping("/api/person")
 @RestController
 public class PersonController {
 
@@ -22,5 +22,16 @@ public class PersonController {
     @PostMapping
     public void addPerson(@RequestBody Person person) {
         personService.addPerson(person);
+    }
+
+    @GetMapping
+    public List<Person> getAllPeople() {
+        return personService.getAllPeople();
+    }
+
+    @GetMapping(path = "{id")
+    public Person getPersonById(@PathVariable("id") UUID id) {
+        return personService.getPersonById(id)
+                .orElse(null);
     }
 }
