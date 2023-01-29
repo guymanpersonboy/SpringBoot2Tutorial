@@ -15,12 +15,12 @@ public class PersonService {
 
     private final PersonDao personDao;
 
-    public PersonService(PersonDao personDao) {
+    public PersonService(@Qualifier("fakeDao") PersonDao personDao) {
         this.personDao = personDao;
     }
 
     @Autowired
-    public int addPerson(@Qualifier("fakeDao") Person person) {
+    public int addPerson(Person person) {
         return personDao.insertPerson(person);
     }
 
