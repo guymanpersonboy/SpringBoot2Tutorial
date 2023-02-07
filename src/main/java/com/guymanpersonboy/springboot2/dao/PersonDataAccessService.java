@@ -1,15 +1,22 @@
 package com.guymanpersonboy.springboot2.dao;
 
 import com.guymanpersonboy.springboot2.model.Person;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-// For the purposes of testing dependency injection, incomplete class
 @Repository("postgres")
 public class PersonDataAccessService implements PersonDao {
+
+    private final JdbcTemplate jdbcTemplate;
+
+    public PersonDataAccessService(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
     @Override
     public int insertPerson(UUID id, Person person) {
         return 0;
