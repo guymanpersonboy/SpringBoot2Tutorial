@@ -1,6 +1,7 @@
 package com.guymanpersonboy.springboot2.dao;
 
 import com.guymanpersonboy.springboot2.model.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +14,7 @@ public class PersonDataAccessService implements PersonDao {
 
     private final JdbcTemplate jdbcTemplate;
 
+    @Autowired
     public PersonDataAccessService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
