@@ -21,7 +21,8 @@ public class PersonDataAccessService implements PersonDao {
 
     @Override
     public int insertPerson(UUID id, Person person) {
-        return 0;
+        final String sql = "INSERT INTO person(id, name) VALUES('" + id.toString() + "', '" + person.getName() + "')";
+        return jdbcTemplate.update(sql);
     }
 
     // Can check that this GET all is used by PersonService
@@ -51,11 +52,13 @@ public class PersonDataAccessService implements PersonDao {
 
     @Override
     public int deletePersonById(UUID id) {
-        return 0;
+        final String sql = "DELETE FROM person WHERE id = ?";
+        return jdbcTemplate.update(sql, id);
     }
 
     @Override
     public int updatePersonById(UUID id, Person person) {
-        return 0;
+        final String sql = "UPDATE person SET name = '" + person.getName() + "' WHERE id = ?";
+        return jdbcTemplate.update(sql, id);
     }
 }
